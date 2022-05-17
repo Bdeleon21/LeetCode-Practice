@@ -1,0 +1,47 @@
+class MinStack {
+    //regular stack
+    Stack<Integer> stack = new Stack<>();
+    //stack for min values
+    Stack<Integer> minVal = new Stack<>();
+
+    public MinStack() {
+        this.stack = new Stack<>();
+    }
+    
+    public void push(int val) {
+        //will push the lowest value to the top for minVal
+        if (minVal.isEmpty() || val <= minVal.peek()) {
+            minVal.push(val);
+        }
+        //pushes regularly
+        stack.push(val);
+    }
+    
+    public void pop() {
+        //if both stack peeks are the same, pop minVal peek
+        if (stack.peek().equals(minVal.peek())) {
+            minVal.pop();
+        }
+        //pop stack peek
+        stack.pop();
+    }
+    
+    //reurns the top of stack
+    public int top() {
+      return stack.peek();  
+    }
+    
+    //returns the lowest value
+    public int getMin() {
+        return minVal.peek();
+    }
+}
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack obj = new MinStack();
+ * obj.push(val);
+ * obj.pop();
+ * int param_3 = obj.top();
+ * int param_4 = obj.getMin();
+ */
