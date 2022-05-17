@@ -1,0 +1,21 @@
+class Solution {
+    public int search(int[] nums, int target) {
+        //create start and end points
+        int start = 0;
+        int end = nums.length - 1;
+        
+        while(start <= end) {
+            //create a mid point
+            int mid = start + (end - start) / 2;
+            
+            //iff target is equal to mid, return mid
+            if (nums[mid] == target) return mid;
+            //if target is less than mid, ignore end section
+            else if (nums[mid] > target) end = mid - 1;
+            //if target is greater than mid, ignore start section
+            else {start = mid + 1;}
+        }
+        //return -1 if it doesnt exist
+        return -1;
+    }
+}
