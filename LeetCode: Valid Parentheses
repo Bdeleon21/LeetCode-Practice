@@ -1,0 +1,33 @@
+class Solution {
+    public boolean isValid(String s) {
+        //if stack is not even, return false
+        if (s.length() % 2 != 0) return false;
+        
+        //create stack
+        Stack<Character> stack = new Stack<>();
+        
+        //loop through s
+        for (char c : s.toCharArray()) {
+            //is current is an open bracket, push
+            if (c == '(' || c == '{' || c == '[') {
+                stack.push(c);
+            }
+            //pop open brackets
+            else if (c == ')' && !stack.isEmpty() && stack.peek() == '(') {
+                stack.pop();
+            }
+            else if (c == '}' && !stack.isEmpty() && stack.peek() == '{') {
+                stack.pop();
+            }
+            else if (c == ']' && !stack.isEmpty() && stack.peek() == '[') {
+                stack.pop();
+            }
+            else {
+                stack.push(c);
+            }
+        }
+            
+        return stack.isEmpty();
+
+    }
+}
