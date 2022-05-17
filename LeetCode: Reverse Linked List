@@ -1,0 +1,37 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    //iterative method
+    public ListNode reverseList(ListNode head) {
+        //nodes that point to current, previous and next
+        ListNode prev = null;
+        ListNode cur = head;
+        ListNode next = null;
+        
+        //if it reached the end==null, return head
+        if (head == null || head.next == null) return head;
+        
+        //while current is not null, iterate through list
+        while (cur != null) {
+            //next will be the one after current
+            next = cur.next;
+            //current next will be the previous
+            cur.next = prev;
+            //previous is now current
+            prev = cur;
+            //current is now the one after, next
+            cur = next;
+        }
+        //when done, head will be previous
+        head = prev;
+        return head;
+    }
+}
