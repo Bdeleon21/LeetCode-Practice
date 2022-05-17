@@ -1,0 +1,31 @@
+class Solution {
+    public boolean isPalindrome(String s) {
+        //if s is blank, its true
+        if (s.isEmpty()) return true;
+        
+        //empty string to put in char of the sentence
+        String fs = "";
+        
+        //for loop to put into fs
+        for (char c : s.toCharArray()){
+            if (Character.isDigit(c) || Character.isLetter(c)) {
+                fs += c;
+            }
+        }
+        
+        //makes it lowercase
+        fs = fs.toLowerCase();
+        int i = 0;
+        int j = fs.length() - 1;
+        
+        //while loop to check
+        while (i < j) {
+            if (fs.charAt(i) != fs.charAt(j)) {
+               return false;
+            }
+            i++;
+            j--;
+        }
+        return true;
+    }
+}
