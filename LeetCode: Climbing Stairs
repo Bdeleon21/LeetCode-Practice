@@ -1,0 +1,20 @@
+class Solution {
+    public int climbStairs(int n) {
+        //base case if no distance
+        if (n < 0) return 0;
+        //base case if n is 0, 1, or 2 steps
+        if (n == 0 || n == 1 || n == 2) return n;
+        
+        //fibonacci
+        int[] d = new int[n + 1];
+        d[1] = 1;
+        d[2] = 2;
+
+        //add ditance ways if taking 1 or 2 steps
+        for (int i = 3; i <= n; i++) {
+            d[i] = d[i - 1] + d[i - 2];
+        }
+
+        return d[n];
+    }
+}
