@@ -1,0 +1,24 @@
+class Solution {
+    public int lastStoneWeight(int[] stones) {
+        //Collections : reverse order to create max heap since it is default min heap
+        PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
+        int y = 0;
+        int x = 0;
+        //add stones to pq
+        for (int num : stones) {
+            pq.add(num); 
+        }
+        
+        //while there is more than 1 stone
+        while (pq.size() > 1) {
+            //pull out stones
+            x = pq.poll();
+            y = pq.poll();
+            //compare and subract weight if x > y
+            if (x > y) pq.add(x - y);
+        }
+        
+        //if yes empty, return 0, if not return peek
+        return pq.isEmpty() ? 0 : pq.peek();
+    }
+}
