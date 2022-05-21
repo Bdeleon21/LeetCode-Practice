@@ -1,0 +1,23 @@
+class Solution {
+    public int[] plusOne(int[] digits) {
+        //loop through digits
+        for (int i = digits.length - 1; i >= 0; i--) {
+            //if current is less than 9
+            if (digits[i] < 9) {
+                //add one to the number
+                digits[i]++;
+                return digits;
+            }
+            //else turn 9 into 0
+            digits[i] = 0;
+
+        }
+        //new array if first number is 9
+        //increase the size ex: 999 -> 1000
+        //array goes from length 3 to 4
+        int [] newDigits = new int[digits.length + 1];
+        //first number must be 1
+        newDigits[0] = 1;
+        return newDigits;
+    }
+}
