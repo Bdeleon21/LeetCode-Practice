@@ -1,0 +1,23 @@
+class Solution {
+    public int maxSubArray(int[] nums) {
+        //base case if nothing in nums
+        if (nums.length == 0) return 0;
+        
+        //initialize
+        int max = nums[0];
+        int sum = 0;
+        
+        //loop array
+        for (int i = 0; i < nums.length; i++) {
+            //add current index
+            sum += nums[i];
+            //max is compared with current sum and max
+            max = Math.max(sum, max);
+            
+            //is sum is less than 0, sum is 0
+            if (sum < 0) sum = 0;
+        }
+        
+        return max;
+    }
+}
