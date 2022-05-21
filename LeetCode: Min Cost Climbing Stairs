@@ -5,10 +5,10 @@ class Solution {
         //loop through array
         for (int i = cost.length - 1; i >= 0; i--) {
             //get temp val by finding min value of c1 or c2
-            minCost = Math.min(cost[i] + c1, cost[i] + c2);
+            temp = Math.min(cost[i] + c1, cost[i] + c2);
             //iterate by giving c1 val of c2
             c1 = c2;
-            c2 = minCost;
+            c2 = temp;
         }
         
         //return lowest val
