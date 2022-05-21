@@ -1,0 +1,28 @@
+class Solution {
+    public boolean isHappy(int n) {
+        //hashset to put val in
+        HashSet<Integer> num = new HashSet<>();
+        //put val in set
+        num.add(n);
+        
+        //while it is not 1
+        while (n != 1) {
+            int sum = 0;
+            
+            //while it is not 0
+            while (n != 0) {
+                //find remainder of 10 to get lowest value and raise to the power of 2
+                sum += Math.pow(n % 10, 2);
+                //divide n by 10 then set n to the new val
+                n /= 10;
+            }
+            //if sum is in num, return false
+            if (num.contains(sum)) return false;
+            //add sum to set
+            num.add(sum);
+            //n is now sum val
+            n = sum;
+        }
+        return true;
+    }
+}
