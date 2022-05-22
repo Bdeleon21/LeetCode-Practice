@@ -1,0 +1,11 @@
+class Solution {
+    public int singleNumber(int[] nums) {
+        int single = 0;
+        for (int i : nums) {
+            //bit manipulation of XOR, the every bit of result is the bit of single number 
+            // ex: ((2^2)^(1) => (0^1) => 1
+            single ^= i;
+        }
+        return single;
+    }
+}
