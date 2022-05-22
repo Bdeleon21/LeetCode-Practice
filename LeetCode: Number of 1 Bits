@@ -1,0 +1,13 @@
+public class Solution {
+    // you need to treat n as an unsigned value
+    public int hammingWeight(int n) {
+        int count = 0;
+        
+        while(n != 0) { 
+            // & = evaluates the value of characters in both numbers starting from the left
+            count += (n & 1);
+            n = n >>> 1; //>>> operator shifts with 0's for + & - numbers
+        }
+        return count;
+    }
+}
