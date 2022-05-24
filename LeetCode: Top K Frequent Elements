@@ -1,0 +1,30 @@
+class Solution {
+    public int[] topKFrequent(int[] nums, int k) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        //for every a, compare to b
+        PriorityQueue<Integer> pq = new PriorityQueue((a,b) -> Integer.compare(map.get(a), map.get(b)));
+        
+        for (int i : nums) {
+            //put in i, if it has a count, put in
+            //if not, put 0
+            map.put(i, map.getOrDefault(i, 0) + 1);
+        }
+        
+        //put into priority queue
+        for (Integer i : map.keySet()) {
+            pq.add(i);
+            
+            //removes smallest value
+            if(pq.size() > k) pq.poll();
+        }
+        
+        //create answer array with top k elements
+        int[] ans = new int[k];
+        for (int i = 0; i < k; i++) {
+            //grab from pq and add to ans
+            ans[i] = pq.poll();
+        }
+        
+        return ans;
+    }
+}
